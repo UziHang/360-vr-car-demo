@@ -1,0 +1,70 @@
+.pointsBox {
+<<<<<<< HEAD
+  position: fixed;
+  transform: translate(-50%, 0%); 
+  left: 50%; 
+  background-color: rgba(0, 168, 253, 0.2);
+=======
+  // position: fixed;
+  // transform: translate(-50%, 0%);
+  left: 50%;
+  // background-color: rgba(0, 168, 253, 0.2);
+  z-index: 9999;
+>>>>>>> f153ead6b34b39c21cb18721a4f87b1839a401b7
+  touch-action: none;
+  width: unset;
+  height: unset;
+
+  .point {
+    width: 15px;
+    height: 15px;
+    background-color: #2ea598;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 999;
+  }
+
+  /* 设置动画前颜色 */
+  .pointFlicker:after {
+    background-color: #2ea598;
+  }
+
+  /* 设置动画后颜色 */
+  .pointFlicker:before {
+    background-color: rgba(0, 168, 253, 0.2);
+  }
+
+  /* 设置动画 */
+  .pointFlicker:before,
+  .pointFlicker:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+    /* CSS3 animation 属性 网址 */
+    animation: warn 1.5s ease-out 0s infinite;
+  }
+
+  /* @keyframes 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。 */
+  @keyframes warn {
+    0% {
+      transform: scale(0.5);
+      opacity: 1;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-capable" content=yes>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="full-screen" content="true">
+  <meta name="browsermode" content="application">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="x5-page-mode" content="app">
+
+  <title> VR 看车demo</title>
+
+  <script type="text/javascript">
+    ! function (e, t) {
+      var a = e.documentElement,
+        n = "orientationchange" in window ? "orientationchange" : "resize",
+        i = function () {
+          var e = a.clientWidth;
+          e && (a.style.fontSize = 750 <= e ? "100px" : e / 750 * 100 + "px")
+        };
+      i(),
+        e.addEventListener && (t.addEventListener(n, i, !1), e.addEventListener("DOMContentLoaded", i, !1))
+    }(document, window);
+
+
+    // 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
+    if (!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' +
+        '>' + '<' + '/' + 'script>');
+    }
+
+    window.addEventListener("orientationchange", hengshuping, false);
+
+    function hengshuping() {
+      //横屏
+      if (window.orientation == 90 || window.orientation == -90) {
+        var fromShu = window.localStorage.getItem('name')
+        if (fromShu == 'a') {
+          window.location.reload(true);
+          window.localStorage.setItem('name', 'b');
+        }
+        return false;
+      }
+      //竖屏
+      else if (window.orientation == 0 || window.orientation == 180) {
+        var fromHeng = window.localStorage.getItem('name');
+        if (fromHeng === 'b') {
+          window.location.reload(true);
+        }
+        window.localStorage.setItem('name', 'a');
+        return false;
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    //将页面设置为横屏浏览
+    const width = document.documentElement.clientWidth;
+    const height = document.documentElement.clientHeight;
+    var screen_width = width; //屏幕宽度
+    if (width < height) {
+      screen_width = height; //如果 是竖屏，灵感的宽度就等于屏高
+      let contentDOM = document.getElementById('root');
+      contentDOM.style.width = height + 'px';
+      contentDOM.style.height = width + 'px';
+      contentDOM.style.top = (height - width) / 2 + 'px';
+      contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+      contentDOM.style.transform = 'rotate(90deg)';
+    }
+
+    //根据手机旋转的角度来判断
+    const evt = "onorientationchange" in window ? "orientationchange" : "resize"; //旋转事件
+    window.addEventListener(evt, function () { //事件监听
+      if (window.orientation === 90 || window.orientation === -90) { //旋转到 90 或 -90 度，即竖屏到横屏
+        screen_width = height; //横屏，灵感的宽度就等于屏高
+        contentDOM.style.width = height + 'px';
+        contentDOM.style.height = width + 'px';
+        contentDOM.style.top = '0px';
+        contentDOM.style.left = '0px';
+        contentDOM.style.transform = 'none'; //不旋转；
+      } else { //旋转到 180 或 0 度，即横屏到竖屏
+        screen_width = height; //竖屏，灵感的宽度就等于屏高
+        contentDOM.style.width = height + 'px';
+        contentDOM.style.height = width + 'px';
+        contentDOM.style.top = (height - width) / 2 + 'px';
+        contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+        contentDOM.style.transform = 'rotate(90deg)'; //旋转90度
+      }
+    }, false);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+@media screen and (orientation: portrait) {
+  //竖屏
+  .VRbody {
+    position: relative;
+    z-index: 999;
+    width: 12rem;
+    height: 8rem;
+    // left: 1rem;
+    // top: -1rem;
+    margin: 0 auto;
+
+    .VRBox {
+      overflow: visible;
+      margin: 0 auto;
+      // max-width: 90vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .VRbody {
+    position: relative;
+    width: 6rem;
+    height: 4rem;
+    margin: 0 auto;
+    left: 0;
+    top: 0;
+    z-index: 99;
+
+    .VRBox {
+      overflow: visible;
+      margin: 0 auto;
+      // max-width: 90vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}

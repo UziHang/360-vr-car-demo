@@ -1,0 +1,59 @@
+* {
+  touch-action: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0), #ccc);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%
+}
+
+@media screen and (orientation: portrait) {
+  html{
+     width : 100% ;
+     height : 100% ;
+      background-color: white ;
+      overflow : hidden;
+  }
+  body{
+      width : 100% ;
+     height : 100% ;
+      overflow : hidden;
+  }
+  #root{
+     position : absolute ;
+  }
+} 
+
+@media screen and (orientation: landscape) {
+   html{
+     width : 100% ;
+     height : 100% ;
+  } 
+   body{
+      width : 100% ;
+     height : 100% ;
+  }
+  #root{
+        position : absolute ;
+        top : 0 ; 
+        left : 0 ;
+        width : 100% ;
+        height : 100% ;
+     }
+}
